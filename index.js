@@ -11,7 +11,7 @@ renderMovies(id)
 async function renderMovies(id) {
     const movie = await fetch("https://omdbapi.com/?s=fast&apikey=a32eca9f")
     const movieData = await movie.json();
-    movieListEl.innerHTML = movieData.search.map(movie => moviesHTML(movie)).join('');
+    movieListEl.innerHTML = movieData.Search.map(movie => moviesHTML(movie)).join('');
 }
 
 renderMovies(id)
@@ -25,9 +25,9 @@ function showMovie(id){
  function moviesHTML(movie){
    return `<div class="movie-card onclick=showMoviePosts(${movie.id})">
     <div class="movie-card__container">
-<h3>${Title}</h3>
-<p><b>year:</b>${movie.year}</p>
-<p><b>imbdID:</b>${movie.imbdID}</p>
+<h3>${movie.Title}</h3>
+<p><b>year:</b>${movie.Year}</p>
+<p><b>imbdID:</b>${movie.ImbdID}</p>
 <p><b>movie poster</b> <a href="https://${movie.poster}" target="_blank">
 ${movie.poster}
 </a></p>
