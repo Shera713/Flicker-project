@@ -1,4 +1,4 @@
-//https://omdbapi.com/?s=fast&apikey=${a32eca9f}
+
 
 const movieListEl = document.querySelector('.movie-list');
      const id = localStorage.getItem("id");
