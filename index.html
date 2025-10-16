@@ -21,7 +21,7 @@
              link__hover-effect">Home</a>
           </li>
           <li class="nav__link">
-            <a href="#movies" target="_blank" class="
+            <a href="#" class="
             nav__link--anchor
             nav__link-anchor--black
              link__hover-effect
@@ -29,7 +29,7 @@
               >Find YOUR Movie</a>
           </li>
           <li class="nav__link">
-            <a href="movies.html" target="_blank" class="
+            <a href="#" class="
             nav__link--anchor 
             nav__link--primary">NEW RELEASES!</a>
           </li>
@@ -48,8 +48,8 @@
             class="input__wrapper--text"
             onchange="onSearchChange(event)"
           />
-          <button class="btn">
-            <a href="./movies.html">
+          <button class="btn" onchange="onSearchChange(event)">
+            <a href="#" onchange="onSearchChange(event)">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </a>
             
@@ -59,9 +59,11 @@
 
     </div>
   </div>
+  <section id="movies">
+
      <div class="container">
     <div class="row">
-      <div class="movie-list">
+      <div class="movie-list" id="movie-list">
         <div class="movie">
           <div class="movie-card">
             <div class="movie-card__container">
@@ -74,5 +76,7 @@
         </div>
       </div>
     </div>
+  </section>
+
 </body>
 </html>
