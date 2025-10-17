@@ -6,6 +6,9 @@
    box-sizing: border-box;
    font-family: Open Sans, sans-serif;
 }
+html{
+  scroll-behavior: smooth;
+}
 
 .purple{
     color: #6030b1;
@@ -148,6 +151,9 @@ HEADER/LANDING
 .landing__decscription{
   margin: 0 auto;
   padding-bottom:24px ;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
  text-transform: uppercase;
 }
 
@@ -197,7 +203,7 @@ HEADER/LANDING
     bottom: 0;
     border: none;
     background-color: #6030b1;
-    color:rgb(39, 241, 238) ;
+    color:rgb(235, 245, 245) ;
     font-weight: bolder;
     transition: all 300ms;
 }
@@ -331,3 +337,151 @@ p {
 .movies__search--label {
   padding-right: 8px;
 }
+
+
+/*
+MENU BUTTON
+*/
+
+.btn__menu{
+   text-align: center;
+    background: transparent;
+    border: none;
+    transition: all 300ms ease;
+    font-size: 40px;
+    color: rgb(36, 62, 99);
+    display: none;
+}
+
+.menu__backdrop{
+position: absolute;
+background-color: #fff;
+top:0;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 100;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: all 300ms ease;
+opacity: 0;
+visibility: hidden;
+}
+.menu--open .menu__backdrop{
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu--open .menu__backdrop{
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu--open{
+    max-height: 100vh;
+    overflow-y: hidden;
+}
+
+.menu__list{
+    padding: 32px 0;
+}
+
+.menu__links{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu__link{
+    color: #1a202c;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+}
+
+.btn__menu--close{
+    position: absolute;
+    right: 18px;
+    top: 24px;
+    padding: 8px;
+    color: rgb(36, 62, 99)
+}
+
+
+.menu--open .modal{
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+ .menu__link--primary{
+    color:#ff328f ;
+    padding: 12px 32px;
+    background: rgb(39, 241, 238);
+    border-radius: 500px;
+    border: none;
+}
+
+/*
+SMART PHONES, TABLETS, LARGE SMARTPHONES
+*/
+
+
+@media(max-width: 1024px){
+   
+  
+   
+    h1 {
+       font-size: 30px; 
+    }
+
+    h2{
+        font-size: 26px;
+}
+.nav__links{
+        display: none;
+    }
+
+    .btn__menu{
+    display: block;
+}
+
+button{
+    font-size: 18px;
+    cursor: pointer;
+}
+}
+
+/*
+SMART PHONES, LARGE SMARTPHONES
+*/
+
+@media(max-width: 640px){
+
+
+
+    .landing__container{
+     padding: 80px 0;
+     display: flex;
+    }
+
+    .nav__link--list{
+      display: none;
+    }
+
+#movies{
+  padding-top: 12px;
+}
+
+.input-wrapper:hover{
+    border-color: rgb(0, 0, 0);
+    transition: border all 600ms ease;
+     transform: none;
+}
+
+  }
