@@ -252,6 +252,7 @@ p {
 .movie-list {
   width: auto;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
