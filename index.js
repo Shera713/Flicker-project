@@ -9,7 +9,7 @@ renderMovies(id)
 }
 
 async function renderMovies(id) {
-    const movie = await fetch("https://omdbapi.com/?s=fast&apikey=a32eca9f")
+    const movie = await fetch("https://omdbapi.com/?s=${searchTerm}&apikey=a32eca9f")
     const movieData = await movie.json();
     movieListEl.innerHTML = movieData.Search.map(movie => moviesHTML(movie)).join('');
 }
@@ -34,6 +34,7 @@ ${movie.poster}
 </div>
 </div>`
  }
+
 
 
 
