@@ -1,49 +1,23 @@
+const moviesWrapper = document.querySelector('.movie-card__container')
+const searchName =document.querySelector ('.searchName')
 
-
-const movieListEl = document.querySelector('.movie-list');
-     const id = localStorage.getItem("id");
-
-async function onSearchChange(event){
-    const id = event.target.value;
-renderMovies(id)
+function searchChange(event){
+    renderMovies(event.target.value)
+    searchName.innerHTML  = event.target.value
 }
 
-async function renderMovies(id) {
-    const movie = await fetch("https://omdbapi.com/?s=${searchTerm}&apikey=a32eca9f")
-    const movieData = await movie.json();
-    movieListEl.innerHTML = movieData.Search.map(movie => moviesHTML(movie)).join('');
+async function renderMovies(searchTerm) {
+    const response = await fetch(`https://omdbapi.com/?s=${searchTerm}&apikey=a32eca9f`);
+    const data = await response.json()
+   const moviesArr = data.Search
+   moviesWrapper.innerHTML = moviesArr.slice(0, 6).map((movie) => {
+return`
+ <img src=${movie.Poster} alt="">
+  <h2>${movie.Title}</h2>
+  <h4>${movie.Year}</h4>
+  <p>${movie.Short}</p>
+`;
+   }).join(""); 
+
 }
 
-renderMovies(id)
-
-function showMovie(id){
-    localStorage.setItem("id", id)
-    window.location.href =`${window.location.origin}/index.html#movies` 
-}
-
-
- function moviesHTML(movie){
-   return `<div class="movie-card onclick=showMoviePosts(${movie.id})">
-    <div class="movie-card__container">
-<h3>${movie.Title}</h3>
-<p><b>year:</b>${movie.Year}</p>
-<p><b>imbdID:</b>${movie.ImbdID}</p>
-<p><b>movie poster</b> <a href="https://${movie.poster}" target="_blank">
-${movie.poster}
-</a></p>
-</div>
-</div>`
- }
-
-
-
-
- //MENU BUTTON
-
- function openMenu(){
-document.body.classList += "menu--open"
-}
-
-function closeMenu(){
-document.body.classList.remove('menu--open')
-}

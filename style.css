@@ -263,7 +263,6 @@ p {
 .movie-list {
   width: auto;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
 }
 
@@ -271,7 +270,8 @@ p {
   width: 50%;
   background-color: white;
   margin: 20px;
-  
+
+ 
 }
 
 .movie-card {
@@ -331,27 +331,16 @@ p {
   padding: 0 8px;
 }
 
-.movies__search {
-  margin-top: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
+
+
+.search-result{
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.movies__search--container {
-  display: flex;
-  flex-direction: column;
-}
-
-.movies__search--label {
-  padding-right: 8px;
-}
-
-.movie__img{
-  height: 240px;
-  width: 240px;
-  
+.searchName{
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 /*

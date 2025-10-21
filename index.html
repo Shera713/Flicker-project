@@ -80,10 +80,10 @@
             type="text"
             placeholder="Search by Year, or Movie Title"
             class="input__wrapper--text"
-            onchange="onSearchChange(event)"
+            onchange="searchChange(event)"
           />
-          <button class="btn" onchange="onSearchChange(event)">
-            <a href="#" onchange="onSearchChange(event)">
+          <button class="btn" >
+            <a href="#">
               <i class="fa-solid fa-magnifying-glass"></i>
             </a>
           </button>
@@ -93,23 +93,23 @@
     <section id="movies">
       <div class="container">
         <div class="row">
-          <div class="movie-list" id="movie-list">
+          <span class="search-result">Searh Result:</span>
+          <span class="searchName"></span>
+    
+          <div class="movie-list">
             <div class="movie">
-              <div class="movie-card">
-                <div class="movie-card__container">
-                  <h3>title:</h3>
-                  <p><b>year:</b></p>
-                  <p><b>imbdID:</b></p>
-                  <p><b>movie poster</b> <a href="#" target="_blank"></a></p>
+              <div class="movie-card__container">
+                  <div class="movie-card">
+                  <img src="" alt="">
+                  <h2></h2>
+                  <h4></h4>
+                  <p></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <figure>
-        <img src="./assets/undraw_horror-movie_9020 (1).svg" class="movie__img">
-      </figure>
     </section>
   </body>
 </html>
