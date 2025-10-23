@@ -12,7 +12,7 @@ async function renderMovies(searchTerm) {
    const moviesArr = data.Search
    moviesWrapper.innerHTML = moviesArr.slice(0, 6).map((movie) => {
 return`
- <div class=${movie-card}>
+ <div class="movie-card">
  <img src=${movie.Poster} alt="">
   <h2>${movie.Title}</h2>
   <h4>${movie.Year}</h4>
