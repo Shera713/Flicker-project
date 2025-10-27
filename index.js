@@ -38,10 +38,10 @@ return`
 
 function orderListBy(event) {
   return function (a, b) {
-      if (a[movie.Year] > b[movie.Year]) {
+      if (a[Year] > b[Year]) {
           return 1;
       }
-      else if (a[movie.Year] < b[movie.Year]) {
+      else if (a[Year] < b[Year]) {
           return -1;
       }
       return 0;
