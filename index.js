@@ -36,12 +36,30 @@ return`
 
 function renderMovieSort(){
  const movieSortWrapper = document.querySelector( 'movieSort');
+ const yearArray = [];
 
- movieSortWrapper.innerHTML = ` <div class="movie-card">
+ yearArray.sort((
+    if (event.target.value === (a[Year] > b[Year])) {
+          return 1;
+      }
+      else if (event.target.value ===(a[Year] < b[Year])) {
+          return -1;
+      }
+      return 0;
+ ))
+      
+  
+
+ yearArrayHtml =  yearArray 
+ .map((Year) => {
+    return  ` <div class="movie-card">
  <img src=${movie.Poster} alt="">
   <h2>${movie.Title}</h2>
   <h4>${movie.Year}</h4>
   </div>`
+ }) .join("")
+
+ movieSortWrapper.innerHTML = yearArrayHtml
 }
 
 setTimeout(() => {
@@ -59,14 +77,5 @@ setTimeout(() => {
 //.sort((a, b) => a.Year - b.Year)
 
 function orderListBy(event) {
-  return function (a, b) {
-      if (a[Year] > b[Year]) {
-          return 1;
-      }
-      else if (a[Year] < b[Year]) {
-          return -1;
-      }
-      return 0;
-  }
+  renderMovieSort(event.target.value)
 }
- orderListBy();
