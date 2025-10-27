@@ -35,7 +35,7 @@ return`
 //}
 
 function renderMovieSort(){
- const movieSortWrapper =document.querySelector( 'movieSort');
+ const movieSortWrapper = document.querySelector( 'movieSort');
 
  movieSortWrapper.innerHTML = ` <div class="movie-card">
  <img src=${movie.Poster} alt="">
