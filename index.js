@@ -10,7 +10,7 @@ async function renderMovies(searchTerm) {
     const response = await fetch(`https://omdbapi.com/?s=${searchTerm}&apikey=a32eca9f`);
     const data = await response.json()
    const moviesArr = data.Search
-   moviesWrapper.innerHTML = moviesArr.slice(0, 6).map((movie) => {
+   moviesWrapper.innerHTML = moviesArr.sort((a, b) => a.Year - b.Year).slice(0, 6).map((movie) => {
 return`
  <div class="movie-card">
  <img src=${movie.Poster} alt="">
@@ -22,7 +22,7 @@ return`
 
 }
 
-//SEARCH BAR 
+//SORT BAR 
 
 //function filterYear(filter){
 //if (filter === 'OLD_TO_NEW'){
@@ -33,6 +33,8 @@ return`
 //}
  
 //}
+
+
 
 function orderListBy(event) {
   return function (a, b) {
@@ -45,3 +47,4 @@ function orderListBy(event) {
       return 0;
   }
 }
+ orderListBy();
