@@ -24,14 +24,24 @@ return`
 
 //SEARCH BAR 
 
-function filterYear(filter){
-if (filter === 'OLD_TO_NEW'){
-    moviesWrapper.sort((a,b) => a.Year - b.Year);
-}
-else if (filter === 'NEW_TO_OLD'){
-    moviesWrapper.sort((a,b) => b.Year - a.Year );
-}
+//function filterYear(filter){
+//if (filter === 'OLD_TO_NEW'){
+ //   sortedByYear = array.sort((a, b) => a.Year - b.Year);
+//}
+//else if (filter === 'NEW_TO_OLD'){
+  //  sortedByYear = array.sort((a, b) => b.Year - a.Year);
+//}
  
-}
+//}
 
-filterYear();
+function orderListBy(event) {
+  return function (a, b) {
+      if (a[movie.Year] > b[movie.Year]) {
+          return 1;
+      }
+      else if (a[movie.Year] < b[movie.Year]) {
+          return -1;
+      }
+      return 0;
+  }
+}
