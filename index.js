@@ -16,10 +16,22 @@ return`
  <img src=${movie.Poster} alt="">
   <h2>${movie.Title}</h2>
   <h4>${movie.Year}</h4>
-  <p>${movie.Short}</p>
   </div>
 `;
    }).join(""); 
 
 }
 
+//SEARCH BAR 
+
+function filterYear(filter){
+if (filter === 'OLD_TO_NEW'){
+    moviesWrapper.sort((a,b) => a.Year - b.Year);
+}
+else if (filter === 'NEW_TO_OLD'){
+    moviesWrapper.sort((a,b) => b.Year - a.Year );
+}
+ 
+}
+
+filterYear();
