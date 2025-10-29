@@ -24,58 +24,48 @@ return`
 
 //SORT BAR 
 
-//function filterYear(filter){
-//if (filter === 'OLD_TO_NEW'){
- //   sortedByYear = array.sort((a, b) => a.Year - b.Year);
-//}
-//else if (filter === 'NEW_TO_OLD'){
-  //  sortedByYear = array.sort((a, b) => b.Year - a.Year);
-//}
- 
-//}
+let movies = []; 
 
-function renderMovieSort(){
- const movieSortWrapper = document.querySelector( 'movieSort');
- const yearArray = [];
+async function fetchMovies(searchTerm) {
+  try {
+    const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=a32eca9f`);
+    const data = await response.json();
 
- yearArray.sort((
-    if (event.target.value === (a[Year] > b[Year])) {
-          return 1;
-      }
-      else if (event.target.value ===(a[Year] < b[Year])) {
-          return -1;
-      }
-      return 0;
- ))
-      
-  
+    movies = data.Search || [];
 
- yearArrayHtml =  yearArray 
- .map((Year) => {
-    return  ` <div class="movie-card">
- <img src=${movie.Poster} alt="">
-  <h2>${movie.Title}</h2>
-  <h4>${movie.Year}</h4>
-  </div>`
- }) .join("")
-
- movieSortWrapper.innerHTML = yearArrayHtml
+    renderMovieSort("NEW_TO_OLD");
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+  }
 }
 
-setTimeout(() => {
-    renderMovieSort();
-});
+function renderMovieSort(order) {
+  const movieSortWrapper = document.querySelector('.movieSort');
+  let sortedMovies = [movies];
 
+  if (order === "OLD_TO_NEW") {
+    sortedMovies.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
+  } else if (order === "NEW_TO_OLD") {
+    sortedMovies.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
+  }
 
+  const html = sortedMovies
+    .map(movie => `
+      <div class="movie-card">
+        <img src="${movie.Poster}" alt="">
+        <h2>${movie.Title}</h2>
+        <h4>${movie.Year}</h4>
+      </div>
+    `)
+    .join("");
 
-
-
-
-
-
-
-//.sort((a, b) => a.Year - b.Year)
+  movieSortWrapper.innerHTML = html;
+}
 
 function orderListBy(event) {
-  renderMovieSort(event.target.value)
+  renderMovieSort(event.target.value);
 }
+
+
+fetchMovies(searchTerm); 
+

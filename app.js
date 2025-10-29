@@ -125,3 +125,24 @@ document.body.classList.remove('menu--open')
     opacity: 0;
   }
 }
+
+
+
+
+//OLD VICTOR CODE WOrked without Search Bar
+
+async function renderMovies(searchTerm) {
+    const response = await fetch(`https://omdbapi.com/?s=${searchTerm}&apikey=a32eca9f`);
+    const data = await response.json()
+   const moviesArr = data.Search
+   moviesWrapper.innerHTML = moviesArr.slice(0, 6).map((movie) => {
+return`
+ <div class="movie-card">
+ <img src=${movie.Poster} alt="">
+  <h2>${movie.Title}</h2>
+  <h4>${movie.Year}</h4>
+  </div>
+`;
+   }).join(""); 
+
+}
