@@ -12,11 +12,8 @@
     ></script>
   </head>
   <body>
-  
     <section id="landing-page">
-  
       <nav>
-    
         <figure>
           <img
             class="logo"
@@ -24,12 +21,7 @@
             alt=""
           />
         </figure>
-        <figure>
-          <img
-            src="./assets/undraw_movie-night_pkvp (1).svg"
-            class="landing__img"
-          />
-        </figure>
+
         <ul class="nav__link--list">
           <li class="nav__link">
             <a href="#" class="nav__link--anchor link__hover-effect">Home</a>
@@ -56,10 +48,14 @@
             <i class="fas fa-times"></i>
             <ul class="menu__links">
               <li class="menu__list">
-                <a href="#" class="menu__link">Home</a>
+                <a href="#" class="menu__link link__hover-effect">Home</a>
               </li>
               <li class="menu__list">
-                <a href="#movies" class="menu__link">Find YOUR Movie</a>
+                <a
+                  href="#movies"
+                  class="menu__link link__hover-effect link__hover-effect--black"
+                  >Find YOUR Movie</a
+                >
               </li>
               <li class="menu__list">
                 <a href="#" class="menu__link menu__link--primary"
@@ -70,7 +66,7 @@
           </button>
         </div>
       </nav>
-     
+
       <div class="landing__container">
         <h1 class="landing__title">
           America's most used movie streaming platform!
@@ -78,7 +74,6 @@
         <h2 class="landing__decscription">
           Stream your favorite movies with <span class="purple">movies!</span>
         </h2>
-  
       </div>
       <div class="input-wrapper">
         <input
@@ -93,50 +88,62 @@
           </a>
         </button>
       </div>
-   
- </section>
+      <div class="popcorn-container">
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+        <div class="popcorn"></div>
+      </div>
+    </section>
 
     <section id="movies">
-  
       <div class="container">
         <div class="row">
           <span class="search-result">Searh Result:</span>
           <span class="searchName"></span>
-<select id="filter" onchange="orderListBy(event)">
-  <option value="" disabled selected>Sort</option>
-  <option value="OLD_TO_NEW" >Oldest to Newest</option>
-  <option value="NEW_TO_OLD" >Newest to Oldest</option>
-</select>
-<div class="movieSort">
-
-</div>
+          <select id="filter" onchange="orderListBy(event)">
+            <option value="" disabled selected>Sort</option>
+            <option value="OLD_TO_NEW">Oldest to Newest</option>
+            <option value="NEW_TO_OLD">Newest to Oldest</option>
+          </select>
+          <div class="movieSort"></div>
           <div class="movie-list">
-
-            <div class="movie">
-                                         <div class="popcorn-container">
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-  <div class="popcorn"></div>
-</div>
-              <div class="movie-card__container">
-    
-                <div class="movie-card">
-                  <img src="" alt="" />
-                  <h2></h2>
-                  <h4></h4>
-                </div>
-              </div>
-            </div>
+            <div class="movie"></div>
           </div>
         </div>
       </div>
     </section>
+
+    <footer>
+      <figure>
+        <img
+          src="./assets/undraw_movie-night_pkvp (1).svg"
+          class="footer__img"
+        />
+      </figure>
+      <ul class="footer__link--list">
+        <li class="footer__link">
+          <a href="#" class="footer__link--anchor link__hover-effect">Home</a>
+        </li>
+        <li class="footer__link">
+          <a
+            href="#"
+            class="footer__link--anchor footer__link-anchor--black link__hover-effect link__hover-effect--black"
+            >Find YOUR Movie</a
+          >
+        </li>
+        <li class="footer__link">
+          <a href="#" class="footer__link--anchor footer__link--primary"
+            >NEW RELEASES!</a
+          >
+        </li>
+      </ul>
+    </footer>
   </body>
 </html>

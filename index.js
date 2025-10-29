@@ -1,52 +1,51 @@
-//CODE FROM INSTUCTION VIDEO//
-//SEARCH BAR ONLY//
 
-const moviesWrapper = document.querySelector('.movie-card__container')
-const searchName =document.querySelector ('.searchName')
+let movies = [];
 
-function searchChange(event){
-    renderMovies(event.target.value)
-    searchName.innerHTML  = event.target.value
-}
+async function searchChange(event) {
+  const searchTerm = event.target.value.trim();
+  const searchNameEl = document.querySelector('.searchName');
+  const movieContainer = document.querySelector('.movieSort');
 
-async function renderMovies(searchTerm) {
-    const response = await fetch(`https://omdbapi.com/?s=${searchTerm}&apikey=a32eca9f`);
-    const data = await response.json()
-   const moviesArr = data.Search
-   moviesWrapper.innerHTML = moviesArr.slice(0, 6).map((movie) => {
-return`
- <div class="movie-card">
- <img src=${movie.Poster} alt="">
-  <h2>${movie.Title}</h2>
-  <h4>${movie.Year}</h4>
-  </div>
-`;
-   }).join(""); 
+  searchNameEl.textContent = searchTerm ? `"${searchTerm}"` : "";
 
-}
+  if (!searchTerm) {
+    movieContainer.innerHTML = "";
+    return;
+  }
 
-
-//AI CODE//
-//SEARCH & SORT BAR  //
-
-let movies = []; 
-
-async function fetchMovies(searchTerm) {
   try {
     const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=a32eca9f`);
     const data = await response.json();
 
-    movies = data.Search || [];
+    if (data.Response === "False") {
+      movieContainer.innerHTML = `<p>No results found for "${searchTerm}".</p>`;
+      movies = [];
+      return;
+    }
 
-    renderMovieSort("NEW_TO_OLD");
+    movies = data.Search;
+
+    renderMovies("NEW_TO_OLD");
   } catch (error) {
     console.error("Error fetching movies:", error);
+    movieContainer.innerHTML = `<p>⚠️ Could not load movies. Please try again later.</p>`;
   }
 }
 
-function renderMovieSort(order) {
+function orderListBy(event) {
+  const order = event.target.value;
+  renderMovies(order);
+}
+
+function renderMovies(order) {
   const movieSortWrapper = document.querySelector('.movieSort');
-  let sortedMovies = [movies];
+  if (!movies || movies.length === 0) {
+    movieSortWrapper.innerHTML = "<p>No movies to display.</p>";
+    return;
+  }
+
+  
+  let sortedMovies = [...movies];
 
   if (order === "OLD_TO_NEW") {
     sortedMovies.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
@@ -54,10 +53,12 @@ function renderMovieSort(order) {
     sortedMovies.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
   }
 
-  const html = sortedMovies
+  const limitedMovies = sortedMovies.slice(0, 6);
+
+  const html = limitedMovies
     .map(movie => `
       <div class="movie-card">
-        <img src="${movie.Poster}" alt="">
+        <img src="${movie.Poster !== 'N/A' ? movie.Poster : './assets/placeholder.png'}" alt="${movie.Title}">
         <h2>${movie.Title}</h2>
         <h4>${movie.Year}</h4>
       </div>
@@ -67,10 +68,16 @@ function renderMovieSort(order) {
   movieSortWrapper.innerHTML = html;
 }
 
-function orderListBy(event) {
-  renderMovieSort(event.target.value);
+
+
+ //MENU BUTTON
+
+ function openMenu(){
+document.body.classList += "menu--open"
 }
 
+function closeMenu(){
+document.body.classList.remove('menu--open')
+}
 
-fetchMovies(searchTerm); 
 
