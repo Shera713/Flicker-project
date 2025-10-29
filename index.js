@@ -1,3 +1,6 @@
+//CODE FROM INSTUCTION VIDEO//
+//SEARCH BAR ONLY//
+
 const moviesWrapper = document.querySelector('.movie-card__container')
 const searchName =document.querySelector ('.searchName')
 
@@ -22,7 +25,9 @@ return`
 
 }
 
-//SORT BAR 
+
+//AI CODE//
+//SEARCH & SORT BAR  //
 
 let movies = []; 
 
